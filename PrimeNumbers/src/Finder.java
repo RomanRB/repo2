@@ -48,7 +48,6 @@ public interface Finder {
                             new Thread(new PrimeFindingThread(tempBeginning, tempEnd, straightToOverallCollection, countDownLatch)).start();
                             tempBeginning = tempEnd + 1;
                         }
-
                     }
                     else{
                         new Thread(new PrimeFindingThread(tempBeginning, intervalEnd, straightToOverallCollection, countDownLatch)).start();
@@ -62,8 +61,6 @@ public interface Finder {
                 else break;
             }
         }
-
-
     }
 
     default void doTasks(int intervalBeginning, int intervalEnd, int threadCount, boolean straightToOverallCollection, CountDownLatch countDownLatch) {
@@ -86,7 +83,6 @@ public interface Finder {
                             threadPool.execute(new PrimeFindingThread(tempBeginning, tempEnd, straightToOverallCollection, countDownLatch));
                             tempBeginning = tempEnd + 1;
                         }
-
                     }
                     else{
                         threadPool.execute(new PrimeFindingThread(tempBeginning, intervalEnd, straightToOverallCollection, countDownLatch));
