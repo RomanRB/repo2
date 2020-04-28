@@ -10,10 +10,10 @@ public interface Finder {
         countDownLatch.await();
         long finish = System.nanoTime();
         if(straightToOverallCollection){
-            System.out.println("Время работы при непосредственном заполнении общей коллекции : " + (finish - start)/1000000000.0 + " сек.");
+            System.out.println("Время работы при непосредственном заполнении общей коллекции: " + (finish - start)/1000000000.0 + " сек.");
         }
         else{
-            System.out.println("Время работы при заполнении промежуточных коллекций : " + (finish - start)/1000000000.0 + " сек.");
+            System.out.println("Время работы при заполнении промежуточных коллекций: " + (finish - start)/1000000000.0 + " сек.");
         }
     }
     default void startTasks(PrimeNumbers primeNumbers, boolean straightToOverallCollection) throws InterruptedException {
