@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.*;
 
 class PrimeNumbers implements Finder{
     static final ConcurrentSkipListSet<Integer> primeNumbersSet = new ConcurrentSkipListSet<>();
@@ -14,7 +13,6 @@ class PrimeNumbers implements Finder{
         primeNumbers.startThreads(primeNumbers, true);
         primeNumbersSet.clear();
         primeNumbers.startThreads(primeNumbers, false);
-
 
     }
     private void setValues(UserInput userInput) throws IOException {

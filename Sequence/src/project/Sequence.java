@@ -1,3 +1,5 @@
+package project;
+
 import java.io.*;
 
 public class Sequence {
@@ -29,18 +31,17 @@ public class Sequence {
         }
     }
 
-    private String getFileName(BufferedReader bufferedReader) throws IOException {
-
+    public String getFileName(BufferedReader bufferedReader) throws IOException {
         System.out.println("Укажите путь к файлу:");
         String fileName = bufferedReader.readLine();
         while (!(new File(fileName).exists())){
             System.out.println("Ошибка. Указанный файл не существует");
             System.out.println("Укажите путь к файлу:");
-            fileName = bufferedReader.readLine();}
-
+            fileName = bufferedReader.readLine();
+        }
         return fileName;
     }
-    private String getFileContent(BufferedReader bufferedReader) throws IOException {
+    public String getFileContent(BufferedReader bufferedReader) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(getFileName(bufferedReader)));
         StringBuilder entry = new StringBuilder();
         String line;

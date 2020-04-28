@@ -1,8 +1,9 @@
+package project;
+
 class Finder implements Runnable {
 
     private String content;
     private static boolean flag;
-
 
     void setContent(String content) {
         this.content = content;
@@ -11,7 +12,6 @@ class Finder implements Runnable {
     static void setFlag(boolean flag) {
         Finder.flag = flag;
     }
-
 
     @Override
     public void run() {
@@ -24,13 +24,12 @@ class Finder implements Runnable {
                 }
             }
             lookForLongest();
-            searchResultOutput();
+            printResult();
             Sequence.switcher = -1;
             setFlag(false);
         }
-
     }
-    private void lookForLongest(){
+     void lookForLongest(){
         String result = "";
         int n = this.content.length();
         for(int i = 0; i < n; i++){
@@ -49,7 +48,7 @@ class Finder implements Runnable {
             }
         }
     }
-    private String largestCommonPrefix(String s, String t){
+     String largestCommonPrefix(String s, String t){
         int n = Math.min(s.length(),t.length());
         for(int i = 0; i < n; i++){
             if(s.charAt(i) != t.charAt(i)){
@@ -58,11 +57,15 @@ class Finder implements Runnable {
         }
         return s.substring(0,n);
     }
-    private void searchResultOutput(){
-        int firstIndex = content.indexOf(Sequence.longestSequence);
+     int[] searchResult(){
+        int [] result = new int[2];
+        result[0] = content.indexOf(Sequence.longestSequence);
         String temp = content.replaceFirst(Sequence.longestSequence, "1");
-        int secondIndex = temp.indexOf(Sequence.longestSequence);
-        System.out.println(String.format("Длина максимальной последовательности - %d, 1-й индекс - %d, 2-й индекс - %d", Sequence.longestSequence.length(), firstIndex, secondIndex));
-
+        result[1] = temp.indexOf(Sequence.longestSequence);
+        return result;
     }
+     private void printResult(){
+        System.out.println(String.format("Длина максимальной последовательности - %d, 1-й индекс - %d, 2-й индекс - %d", Sequence.longestSequence.length(), searchResult()[0], searchResult()[1]));
+    }
+
 }
